@@ -1,7 +1,7 @@
 require 'box/api'
 require 'box/folder'
 
-module Box
+module BoxV1
   # Represents an account on Box. In order to use the Box api, the user
   # must first grant the application permission to use their account. This
   # is done in the {#authorize} function. Once an account has been

@@ -2,7 +2,7 @@ require 'box/api/exceptions'
 
 require 'httmultiparty'
 
-module Box
+module BoxV1
   # A wrapper and interface to the Box api. Please visit the Box developers
   # site for a full explaination of what each of the Box api methods
   # expect and perform.

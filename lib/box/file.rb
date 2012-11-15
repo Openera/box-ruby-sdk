@@ -1,6 +1,6 @@
 require 'box/item'
 
-module Box
+module BoxV1
   # Represents a file stored on Box. Any attributes or actions typical to
   # a Box file can be accessed through this class.
 

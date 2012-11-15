@@ -1,6 +1,6 @@
 require 'box/comment'
 
-module Box
+module BoxV1
   # Represents a folder or file stored on Box. Any attributes or actions
   # typical to a Box item can be accessed through this class. The {Item}
   # class contains only methods shared by {Folder} and {File}, and should

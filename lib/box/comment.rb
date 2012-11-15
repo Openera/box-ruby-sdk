@@ -1,4 +1,4 @@
-module Box
+module BoxV1
   class Comment
     def self.create(api, comments)
       if comments

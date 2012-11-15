@@ -1,4 +1,4 @@
-module Box
+module BoxV1
   class Api
     class Exception < StandardError; end
 

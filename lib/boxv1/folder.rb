@@ -1,5 +1,5 @@
-require 'box/item'
-require 'box/file'
+require 'boxv1/item'
+require 'boxv1/file'
 
 module BoxV1
   # Represents a folder stored on Box. Any attributes or actions typical to

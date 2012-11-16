@@ -1,5 +1,5 @@
-require 'box/api'
-require 'box/folder'
+require 'boxv1/api'
+require 'boxv1/folder'
 
 module BoxV1
   # Represents an account on Box. In order to use the Box api, the user

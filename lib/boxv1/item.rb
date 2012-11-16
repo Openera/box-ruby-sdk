@@ -1,4 +1,4 @@
-require 'box/comment'
+require 'boxv1/comment'
 
 module BoxV1
   # Represents a folder or file stored on Box. Any attributes or actions

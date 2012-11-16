@@ -11,6 +11,6 @@
 # limitations under the License.
 
 # These three are the only classes that should be accessed directly
-require 'box/account'
-require 'box/file'
-require 'box/folder'
+require 'boxv1/account'
+require 'boxv1/file'
+require 'boxv1/folder'

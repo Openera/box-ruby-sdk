@@ -1,4 +1,4 @@
-require 'box/api/exceptions'
+require 'boxv1/api/exceptions'
 
 require 'httmultiparty'
 

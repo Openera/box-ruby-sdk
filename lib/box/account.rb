@@ -19,8 +19,8 @@ module BoxV1
     # @param [String, Api] api the api key to use for the Box api.
     def initialize(api)
       @api = case
-        when api.class == Box::Api; api # use the api object as passed in
-        else; Box::Api.new(api) # allows user to pass in a string
+        when api.class == BoxV1::Api; api # use the api object as passed in
+        else; BoxV1::Api.new(api) # allows user to pass in a string
       end
     end
 
@@ -179,7 +179,7 @@ module BoxV1
     #       any info.
     #
     def folder(id)
-      Box::Folder.new(@api, nil, :id => id)
+      BoxV1::Folder.new(@api, nil, :id => id)
     end
 
     # Gets a file object by id.
@@ -195,7 +195,7 @@ module BoxV1
     #       any info.
     #
     def file(id)
-      Box::File.new(@api, nil, :id => id)
+      BoxV1::File.new(@api, nil, :id => id)
     end
 
     # @return [Boolean] Is the account authorized?

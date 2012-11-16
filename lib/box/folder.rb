@@ -15,8 +15,8 @@ module BoxV1
     def info(refresh = false)
       return self if @cached_info and not refresh
 
-      create_sub_items(nil, Box::Folder)
-      create_sub_items(nil, Box::File)
+      create_sub_items(nil, BoxV1::Folder)
+      create_sub_items(nil, BoxV1::File)
 
       super
     end
@@ -54,7 +54,7 @@ module BoxV1
 
       delete_info('folders')
 
-      Box::Folder.new(api, self, info)
+      BoxV1::Folder.new(api, self, info)
     end
 
     # Upload a new file using this folder as the parent
@@ -66,7 +66,7 @@ module BoxV1
 
       delete_info('files')
 
-      Box::File.new(api, self, info)
+      BoxV1::File.new(api, self, info)
     end
 
     # Search for sub-items using criteria.
@@ -103,8 +103,8 @@ module BoxV1
 
     # (see Item#force_cached_info)
     def force_cached_info
-      create_sub_items(nil, Box::Folder)
-      create_sub_items(nil, Box::File)
+      create_sub_items(nil, BoxV1::Folder)
+      create_sub_items(nil, BoxV1::File)
 
       super
     end
@@ -114,8 +114,8 @@ module BoxV1
     def force_cached_tree
       @cached_tree = true
 
-      create_sub_items(nil, Box::Folder)
-      create_sub_items(nil, Box::File)
+      create_sub_items(nil, BoxV1::Folder)
+      create_sub_items(nil, BoxV1::File)
 
       folders.each do |folder|
         folder.force_cached_tree
@@ -202,11 +202,11 @@ module BoxV1
     # (see Item#update_info)
     def update_info(info)
       if folders = info.delete('folders')
-        create_sub_items(folders, Box::Folder)
+        create_sub_items(folders, BoxV1::Folder)
       end
 
       if files = info.delete('files')
-        create_sub_items(files, Box::File)
+        create_sub_items(files, BoxV1::File)
       end
 
       super

@@ -73,25 +73,25 @@ module Box
       unless response.success?
         case response.response
         when Net::HTTPUnauthorized
-          raise Box::Api::NotAuthorized.new( response )
+          raise Box::Api::NotAuthorized.new( response.to_json )
         when Net::HTTPForbidden
-          raise Box::Api::Restricted.new( response )
+          raise Box::Api::Restricted.new( response.to_json )
         when Net::HTTPConflict
-          raise Box::Api::NameTaken.new( response )
+          raise Box::Api::NameTaken.new( response.to_json )
 
         when Net::HTTPUnknownResponse
           case response.code
           when 429 # rate limited
-            raise Box::Api::RateLimited.new( response )
+            raise Box::Api::RateLimited.new( response.to_json )
           when 507 # insufficient_storeage
-            raise Box::Api::AccountExceeded.new( response )
+            raise Box::Api::AccountExceeded.new( response.to_json )
           else
-            raise Box::Api::UnknownResponse.new( response )
+            raise Box::Api::UnknownResponse.new( response.to_json )
           end
         when Net::HTTPServerError
-          raise Box::Api::Unknown.new( response )
+          raise Box::Api::Unknown.new( response.to_json )
         when Net::HTTPClientError
-          raise Box::Api::InvalidInput.new( response )
+          raise Box::Api::InvalidInput.new( response.to_json )
         end
       end
       response

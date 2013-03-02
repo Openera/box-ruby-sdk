@@ -70,8 +70,30 @@ module Box
       params[:body] = body if body
 
       response = self.class.send(method.to_sym, url, params)
-      raise response.inspect unless response.success?
+      unless response.success?
+        case response.response
+        when Net::HTTPUnauthorized
+          raise Box::Api::NotAuthorized.new( response )
+        when Net::HTTPForbidden
+          raise Box::Api::Restricted.new( response )
+        when Net::HTTPConflict
+          raise Box::Api::NameTaken.new( response )
 
+        when Net::HTTPUnknownResponse
+          case response.code
+          when 429 # rate limited
+            raise Box::Api::RateLimited.new( response )
+          when 507 # insufficient_storeage
+            raise Box::Api::AccountExceeded.new( response )
+          else
+            raise Box::Api::UnknownResponse.new( response )
+          end
+        when Net::HTTPServerError
+          raise Box::Api::Unknown.new( response )
+        when Net::HTTPClientError
+          raise Box::Api::InvalidInput.new( response )
+        end
+      end
       response
     end
 
